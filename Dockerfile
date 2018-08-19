@@ -11,6 +11,8 @@ RUN yum install epel-release -y && \
     openldap-devel openldap-clients pam-devel bzip2 vim wget -y \
     yum clean all && yum -y autoremove
 
+WORKDIR /opt
+
 RUN cd /opt && wget https://download.samba.org/pub/samba/stable/samba-4.6.0.tar.gz && \
     tar -zxvf samba-4.6.0.tar.gz && rm -rf samba-4.6.0.tar.gz && cd samba-4.6.0 && \
     ./configure --enable-debug --enable-selftest --with-ads --with-systemd --with-winbind && \
@@ -25,5 +27,4 @@ ENV AD_ADMIN_PASS Test@1234
 EXPOSE 389
 ADD entrypoint.sh /opt/entrypoint.sh
 
-CMD ["/opt/entrypoint.sh"]
-
+ENTRYPOINT ["/opt/entrypoint.sh"]
