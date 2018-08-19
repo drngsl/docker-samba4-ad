@@ -15,7 +15,9 @@ RUN cd /opt && wget https://download.samba.org/pub/samba/stable/samba-4.6.0.tar.
     tar -zxvf samba-4.6.0.tar.gz && rm -rf samba-4.6.0.tar.gz && cd samba-4.6.0 && \
     ./configure --enable-debug --enable-selftest --with-ads --with-systemd --with-winbind && \
     make && make install && \
-    echo "PATH=$PATH:/usr/local/samba/bin" >> /etc/profile
+    cd .. && rm -rf samba-4.6.0 && \
+    echo "PATH=$PATH:/usr/local/samba/bin" >> /etc/profile && \
+    source /etc/profile
 
 ENV AD_DOMAIN drngsl.local
 ENV AD_ADMIN_PASS Test@1234
