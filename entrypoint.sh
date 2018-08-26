@@ -26,7 +26,7 @@ fi
 # start samba
 /usr/local/samba/sbin/samba
 
-if [ ! -f /tmp/adtmp ]; then
-    touch /tmp/adtmp
-fi
-tailf /tmp/adtmp
+while [ true ];
+do
+    sleep 60
+done
