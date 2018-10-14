@@ -13,7 +13,7 @@ RUN yum install epel-release -y && \
 
 WORKDIR /opt
 
-RUN cd /opt && wget https://download.samba.org/pub/samba/stable/samba-4.6.0.tar.gz && \
+RUN wget https://download.samba.org/pub/samba/stable/samba-4.6.0.tar.gz && \
     tar -zxvf samba-4.6.0.tar.gz && rm -rf samba-4.6.0.tar.gz && cd samba-4.6.0 && \
     ./configure --enable-debug --enable-selftest --with-ads --with-systemd --with-winbind && \
     make && make install && \
