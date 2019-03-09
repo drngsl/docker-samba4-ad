@@ -22,9 +22,10 @@ RUN wget https://download.samba.org/pub/samba/stable/samba-4.6.0.tar.gz && \
     source /etc/profile
 
 ENV AD_DOMAIN drngsl.local
-ENV AD_ADMIN_PASS Test@1234
+ENV AD_PASSWORD drngsl@local
+ENV AD_NOSTRONGAUTH 1
 
-EXPOSE 389
+EXPOSE 53 135 137/udp 138/udp 139 389 445 464 636
 ADD entrypoint.sh /opt/entrypoint.sh
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
